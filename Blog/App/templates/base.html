@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog - a2data Team</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap cdn -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/journal/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://files.arion2000.xyz/r/bootswatch_452_flaty_bootstrap.min.css" />
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css"> -->
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="mainNav">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'Home' %}">📰 Blog | a2data Team 📰</a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item text-black">
+              <a class="nav-link text-black font-weight-bold" href="https://arion2000.xyz/news">arion2000.xyz News</a>
+            </li>
+            <li class="nav-item text-black">
+              <a class="nav-link text-black font-weight-bold" href="mailto:tickets@arion2000.xyz">Kontakt</a>
+            </li>
+            {% if user.is_authenticated and user.is_staff %}
+              <li class="nav-item text-black">
+                <a class="nav-link text-black font-weight-bold" href="/admin">Admin</a>
+              </li>
+            {% else %}
+              <li class="nav-item text-black">
+                <a class="nav-link text-black font-weight-bold" href="/admin/login/?next=/">Login</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% block content %}
+      <!-- Content Goes here -->
+    {% endblock %}
+    <!-- Footer -->
+    <footer class="py-3 bg-grey">
+      <p class="m-0 text-dark text-center">
+        <a href="https://arion2000.xyz" target="_blank">a2data</a> - 2024
+      </p>
+    </footer>
+  </body>
+</html>
